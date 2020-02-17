@@ -8,27 +8,40 @@
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "ui_inspector.h"
+#include "hierarchy.h"
+#include "inspector.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui_main(new Ui::MainWindow),
-    ui_inspector(new Ui::Inspector)
+    ui_main(new Ui::MainWindow)
 {
 
 
     ui_main->setupUi(this);
 
-    QWidget* widget_inspector = new QWidget();
 
-    ui_inspector->setupUi(widget_inspector);
-    ui_main->dockInspector->setWidget(widget_inspector);
-    connect(ui_main->action,SIGNAL(triggered()),SLOT(ActionOneSlot()));
+    connect(ui_main->actionLoad,SIGNAL(triggered()),SLOT(ActionOneSlot()));
+
+
+    hierarchy = new Hierarchy();
+    inspector = new Inspector();
+
+    ui_main->dockBase->setWidget(hierarchy);
+    ui_main->dockInspector->setWidget(inspector);
 
 }
 
 void MainWindow::ActionOneSlot() {
+    QMessageBox::StandardButton button = QMessageBox::question(
+                this,
+                "Exit",
+                "Suck my ****"
+    );
+    if (button == QMessageBox::Yes)
+    {
+        qApp->exit();
+    }
 
 }
 

@@ -24,6 +24,12 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QDockWidget" name="dockBase">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+     <horstretch>199</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="palette">
     <palette>
      <active>
@@ -467,7 +473,7 @@
     </palette>
    </property>
    <property name="cursor">
-    <cursorShape>ForbiddenCursor</cursorShape>
+    <cursorShape>ArrowCursor</cursorShape>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -918,7 +924,7 @@
     </palette>
    </property>
    <property name="cursor">
-    <cursorShape>ForbiddenCursor</cursorShape>
+    <cursorShape>ArrowCursor</cursorShape>
    </property>
    <attribute name="dockWidgetArea">
     <number>2</number>
@@ -1384,19 +1390,31 @@
    </property>
    <widget class="QMenu" name="menuCreate">
     <property name="title">
-     <string>Create</string>
+     <string>File</string>
     </property>
-    <addaction name="action"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuLoad">
+    <property name="title">
+     <string>Load</string>
+    </property>
+    <addaction name="actionLoad"/>
    </widget>
    <addaction name="menuCreate"/>
+   <addaction name="menuLoad"/>
   </widget>
-  <action name="action">
+  <action name="actionQuit">
    <property name="icon">
     <iconset resource="icons.qrc">
-     <normaloff>:/icon/Icons/Arrow down.png</normaloff>:/icon/Icons/Arrow down.png</iconset>
+     <normaloff>:/icon/Icons/Badge-multiply.png</normaloff>:/icon/Icons/Badge-multiply.png</iconset>
    </property>
    <property name="text">
-    <string>uyjuj</string>
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionLoad">
+   <property name="text">
+    <string>Load</string>
    </property>
   </action>
  </widget>

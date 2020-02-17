@@ -25,7 +25,8 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QAction *action;
+    QAction *actionQuit;
+    QAction *actionLoad;
     QWidget *centralWidget;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -37,17 +38,20 @@ public:
     QWidget *dockWidgetContents_3;
     QMenuBar *menuBar;
     QMenu *menuCreate;
+    QMenu *menuLoad;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(895, 601);
-        action = new QAction(MainWindow);
-        action->setObjectName(QString::fromUtf8("action"));
+        actionQuit = new QAction(MainWindow);
+        actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
         QIcon icon;
-        icon.addFile(QString::fromUtf8(":/icon/Icons/Arrow down.png"), QSize(), QIcon::Normal, QIcon::Off);
-        action->setIcon(icon);
+        icon.addFile(QString::fromUtf8(":/icon/Icons/Badge-multiply.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionQuit->setIcon(icon);
+        actionLoad = new QAction(MainWindow);
+        actionLoad->setObjectName(QString::fromUtf8("actionLoad"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         MainWindow->setCentralWidget(centralWidget);
@@ -59,6 +63,11 @@ public:
         MainWindow->setStatusBar(statusBar);
         dockBase = new QDockWidget(MainWindow);
         dockBase->setObjectName(QString::fromUtf8("dockBase"));
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(199);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(dockBase->sizePolicy().hasHeightForWidth());
+        dockBase->setSizePolicy(sizePolicy);
         QPalette palette;
         QBrush brush(QColor(0, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -135,7 +144,7 @@ public:
         palette.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush9);
 #endif
         dockBase->setPalette(palette);
-        dockBase->setCursor(QCursor(Qt::ForbiddenCursor));
+        dockBase->setCursor(QCursor(Qt::ArrowCursor));
         dockWidgetContents = new QWidget();
         dockWidgetContents->setObjectName(QString::fromUtf8("dockWidgetContents"));
         dockBase->setWidget(dockWidgetContents);
@@ -208,7 +217,7 @@ public:
         palette1.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush9);
 #endif
         dockInspector->setPalette(palette1);
-        dockInspector->setCursor(QCursor(Qt::ForbiddenCursor));
+        dockInspector->setCursor(QCursor(Qt::ArrowCursor));
         dockWidgetContents_2 = new QWidget();
         dockWidgetContents_2->setObjectName(QString::fromUtf8("dockWidgetContents_2"));
         dockInspector->setWidget(dockWidgetContents_2);
@@ -292,10 +301,14 @@ public:
         menuBar->setGeometry(QRect(0, 0, 895, 20));
         menuCreate = new QMenu(menuBar);
         menuCreate->setObjectName(QString::fromUtf8("menuCreate"));
+        menuLoad = new QMenu(menuBar);
+        menuLoad->setObjectName(QString::fromUtf8("menuLoad"));
         MainWindow->setMenuBar(menuBar);
 
         menuBar->addAction(menuCreate->menuAction());
-        menuCreate->addAction(action);
+        menuBar->addAction(menuLoad->menuAction());
+        menuCreate->addAction(actionQuit);
+        menuLoad->addAction(actionLoad);
 
         retranslateUi(MainWindow);
 
@@ -305,8 +318,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        action->setText(QApplication::translate("MainWindow", "uyjuj", nullptr));
-        menuCreate->setTitle(QApplication::translate("MainWindow", "Create", nullptr));
+        actionQuit->setText(QApplication::translate("MainWindow", "Quit", nullptr));
+        actionLoad->setText(QApplication::translate("MainWindow", "Load", nullptr));
+        menuCreate->setTitle(QApplication::translate("MainWindow", "File", nullptr));
+        menuLoad->setTitle(QApplication::translate("MainWindow", "Load", nullptr));
     } // retranslateUi
 
 };
