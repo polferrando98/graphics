@@ -147,6 +147,7 @@ public:
         dockBase->setCursor(QCursor(Qt::ArrowCursor));
         dockWidgetContents = new QWidget();
         dockWidgetContents->setObjectName(QString::fromUtf8("dockWidgetContents"));
+        dockWidgetContents->setMinimumSize(QSize(400, 0));
         dockBase->setWidget(dockWidgetContents);
         MainWindow->addDockWidget(static_cast<Qt::DockWidgetArea>(1), dockBase);
         dockInspector = new QDockWidget(MainWindow);

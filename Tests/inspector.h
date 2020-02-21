@@ -20,6 +20,10 @@ private:
     Ui::Transform *ui_transorm;
     Ui::Mesh *ui_mesh;
 
+    QWidget *mesh_widget;
+
+public slots:
+    void OnEntitySelected(int entityId);
 
 };
 

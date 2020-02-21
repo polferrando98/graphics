@@ -10,7 +10,7 @@ Inspector::Inspector(QWidget *parent) :
     QWidget *transform_widget = new QWidget;
     ui_transorm->setupUi((transform_widget));
 
-    QWidget *mesh_widget = new QWidget;
+    mesh_widget = new QWidget;
     ui_mesh->setupUi(mesh_widget);
 
     QVBoxLayout *layout = new QVBoxLayout();
@@ -18,9 +18,20 @@ Inspector::Inspector(QWidget *parent) :
     layout->addWidget(mesh_widget);
     layout->addItem(new QSpacerItem(1,1,QSizePolicy::Expanding,QSizePolicy::Expanding));
     setLayout(layout);
+
 }
 
 Inspector::~Inspector()
 {
 
+}
+
+
+void Inspector::OnEntitySelected(int entityId) {
+    if (entityId % 2 == 0){
+        mesh_widget->show();
+    }
+    else {
+        mesh_widget->hide();
+    }
 }
